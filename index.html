@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Countdown</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: rgba(67,67,67,0.67);
+      text-align: center;
+      padding: 2rem;
+    }
+    .event {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    h1 {
+      margin-bottom: 3em;
+      color: #fff;
+    }
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>School Events</h1>
+  <p>These events are only updated every September.</p>
+  <div class="event">
+    <h2>Halloween Half Term</h2>
+    <div class="countdown" id="halloween_hol"></div>
+  </div>
+  <div class="event">
+    <h2>Christmas Break</h2>
+    <div class="countdown" id="christmas_hol"></div>
+  </div>
+
+  <div class="event">
+    <h2>Valentine's Day Half Term</h2>
+    <div class="countdown" id="valentines_hol"></div>
+  </div>
+
+  <div class="event">
+    <h2>Easter Break</h2>
+    <div class="countdown" id="easter_hol"></div>
+  </div>
+
+  <div class="event">
+    <h2>May Half Term</h2>
+    <div class="countdown" id="may_hol"></div>
+  </div>
+
+  <div class="event">
+    <h2>EXAM WEEK</h2>
+    <div class="countdown" id="exam"></div>
+  </div>
+
+  <div class="event">
+    <h2>Exam Week over</h2>
+    <div class="countdown" id="exam-over"></div>
+  </div>
+
+  <div class="event">
+    <h2>Summer Holidays</h2>
+    <div class="countdown" id="summer_hol"></div>
+  </div>
+
+  <h2> </h2>
+  <h1>World Holidays</h1>
+
+  <div class="event">
+    <h2>Halloween</h2>
+    <div class="countdown" id="halloween"></div>
+  </div>
+
+  <div class="event">
+    <h2>Bonfire Night</h2>
+    <div class="countdown" id="bonfire-night"></div>
+  </div>
+
+  <div class="event">
+    <h2>Remembrance Day</h2>
+    <div class="countdown" id="remembrance-day"></div>
+  </div>
+
+  <div class="event">
+    <h2>Christmas Eve</h2>
+    <div class="countdown" id="christmas-eve"></div>
+  </div>
+
+  <div class="event">
+    <h2>Christmas Day</h2>
+    <div class="countdown" id="christmas-day"></div>
+  </div>
+
+  <div class="event">
+    <h2>New Year's Eve</h2>
+    <div class="countdown" id="new-year-eve"></div>
+  </div>
+
+  <div class="event">
+    <h2>New Year's Day</h2>
+    <div class="countdown" id="new-year"></div>
+  </div>
+
+  <div class="event">
+    <h2>Valentine's Day</h2>
+    <div class="countdown" id="valentines"></div>
+  </div>
+
+  <div class="event">
+    <h2>April Fools</h2>
+    <div class="countdown" id="april-fools"></div>
+  </div>
+
+  <div class="event">
+    <h2>Mother's Day</h2>
+    <div class="countdown" id="mothers-day"></div>
+  </div>
+  
+  <div class="event">
+    <h2>Fathers Day</h2>
+    <div class="countdown" id="fathers-day"></div>
+  </div>
+
+  <script>
+    function countdown(id, dateStr) {
+      const target = new Date(dateStr).getTime();
+      const el = document.getElementById(id);
+
+      function update() {
+        const now = new Date().getTime();
+        const diff = target - now;
+
+        if (diff <= 0) {
+          el.innerHTML = "Finished!";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        el.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    countdown("halloween_hol",   "Oct 24, 2025 15:50:00");
+    countdown("christmas_hol",   "Dec 13, 2025 12:55:00");
+    countdown("valentines_hol",  "Feb 13, 2026 15:50:00");
+    countdown("easter_hol",      "Mar 28, 2026 00:00:00");
+    countdown("may_hol",         "May 23, 2026 00:00:00");
+    countdown("exam",            "Jun 02, 2026 00:00:00");
+    countdown("exam-over",       "Jun 08, 2026 15:50:00");
+    countdown("summer_hol",      "Jul 11, 2026 00:00:00");
+
+    countdown("new-year",        "Jan 01, 2027 00:00:00");
+    countdown("new-year-eve",    "Dec 31, 2026 00:00:00");
+    countdown("halloween",       "Oct 31, 2026 00:00:00");
+    countdown("bonfire-night",   "Nov 05, 2026 00:00:00");
+    countdown("remembrance-day", "Nov 11, 2026 11:00:00");
+    countdown("christmas-eve",   "Dec 24, 2026 00:00:00");
+    countdown("christmas-day",   "Dec 25, 2026 00:00:00");
+    countdown("valentines",      "Feb 14, 2027 00:00:00");
+    countdown("april-fools",     "Apr 01, 2026 00:00:00");
+    countdown("mothers-day",     "Mar 22, 2026 00:00:00");
+    countdown("fathers-day",     "Jun 21, 2026 00:00:00");
+
+  </script>
+</body>
+</html>
